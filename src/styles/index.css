@@ -1,0 +1,13 @@
+.container {
+  padding: 14px;
+}
+
+.intro-title {
+  margin: 14px 0 0 0;
+  font-weight: 700;
+}
+
+.intro-info {
+  margin: 0;
+  font-weight: 700;
+}
