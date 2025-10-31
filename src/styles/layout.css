@@ -13,16 +13,20 @@ body {
 
 .main-window {
   width: 60%;
-  height: 80%;
+  min-height: 80%;
+  height: auto;
   background-color: #bebebe;
   box-shadow: inset -3px -3px #000000, inset 3px 3px #bebebe,
     inset -6px -6px #858585, inset 6px 6px #ebebeb;
   padding: 9px;
+  display: flex;
+  margin-bottom: 36px;
+  flex-direction: column;
 }
 
 .title-bar {
   width: calc(100% - 12px);
-  height: 8%;
+  height: 64px;
   background-image: linear-gradient(90deg, #1c32af, #417fe3);
   display: flex;
   align-items: center;
@@ -73,7 +77,8 @@ body {
     inset -6px -6px #858585, inset 6px 6px #cecece;
 }
 
-.nav-btn:active {
+.nav-btn:active,
+.nav-active {
   background-color: #ebebeb;
   box-shadow: inset -3px -3px #ebebeb, inset 3px 3px #000000,
     inset -6px -6px #d9d9d9, inset 6px 6px #858585;
@@ -82,4 +87,36 @@ body {
 nav {
   display: flex;
   justify-content: space-between;
+}
+
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  height: 36px;
+  background-color: #bebebe;
+  width: 100%;
+  box-shadow: inset 0px 2px #cecece, inset 0px 4px #ebebeb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 3px;
+}
+
+.startbutton {
+  box-shadow: inset -3px -3px #000000, inset 3px 3px #ebebeb,
+    inset -6px -6px #858585, inset 6px 6px #cecece;
+  width: 64px;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.local-time {
+  padding: 1px 10px 1px 10px;
+  margin-right: 5px;
+  box-shadow: inset -3px -3px #ebebeb, inset 3px 3px #858585;
+  height: 75%;
 }
