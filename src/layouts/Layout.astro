@@ -14,8 +14,13 @@ const argentinaTime = moment()
   .format("h:mm a");
 const currentPath = Astro.url.pathname;
 let inAboutPage = false;
+let inGuestbookPage = false;
 if (currentPath === "/") {
   inAboutPage = true;
+  inGuestbookPage = false;
+} else if (currentPath === "/guestbook") {
+  inAboutPage = false;
+  inGuestbookPage = true;
 }
 ---
 
@@ -40,12 +45,19 @@ if (currentPath === "/") {
       </div>
       <nav>
         <a
-          href="#"
+          href="/"
           class:list={["about-me-btn", "nav-btn", inAboutPage && "nav-active"]}
           >about me.html</a
         >
         <a href="#" class="nav-btn">todo.html</a>
-        <a href="#" class="nav-btn">todo.html</a>
+        <a
+          href="/guestbook"
+          class:list={[
+            "guestbook-btn",
+            "nav-btn",
+            inGuestbookPage && "nav-active",
+          ]}>guestbook.html</a
+        >
         <a href="#" class="nav-btn">todo.html</a>
       </nav>
       <slot />

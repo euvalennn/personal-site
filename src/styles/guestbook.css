@@ -1,0 +1,76 @@
+.container {
+  padding: 12px;
+}
+
+.guestbook-title {
+  margin: 0 0 15px 0;
+}
+
+.guestbook-form {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.name-label,
+.message-label {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10%;
+  font-weight: 600;
+}
+
+.message-label {
+  width: 40%;
+}
+
+.message-input,
+.name-input {
+  box-shadow: inset -1px -1px #ebebeb, inset 1px 1px #858585,
+    inset -2px -2px #bebebe, inset 2px 2px #000000;
+  border: none;
+  font-size: 1.25em;
+  padding: 0.25em;
+}
+
+input:focus {
+  outline: none;
+}
+
+.send-btn {
+  height: 30px;
+  width: 7.5%;
+  background-color: #bebebe;
+  box-shadow: inset -1px -1px #000000, inset 1px 1px #ebebeb,
+    inset -2px -2px #858585, inset 2px 2px #cecece;
+  font-weight: 600;
+  border: none;
+}
+
+.send-btn:active {
+  background-color: #ebebeb;
+  box-shadow: inset -1px -1px #ebebeb, inset 1px 1px #000000,
+    inset -2px -2px #d9d9d9, inset 2px 2px #858585;
+}
+
+.err-msgs {
+  display: flex;
+  color: red;
+  font-weight: 600;
+}
+
+.name-err-msg {
+  margin-right: 10px;
+}
+
+.guestbook-entries {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  justify-content: space-between;
+  row-gap: 10px;
+  height: 40vh;
+  width: 100%;
+  margin-top: 10px;
+}

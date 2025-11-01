@@ -1,0 +1,73 @@
+---
+import CloseButton from "../assets/close-button.svg";
+import MessageIcon from "../assets/message-icon.png";
+import { Image } from "astro:assets";
+const { name, message } = Astro.props;
+---
+
+<div class="container">
+  <div class="name-bar">
+    <h1 class="entry-title"><span class="name">{name}</span> said...</h1>
+    <div class="name-bar-buttons">
+      <CloseButton class="close-btn" />
+    </div>
+  </div>
+  <div class="message">
+    <Image class="msg-icon" src={MessageIcon} alt="windows 98 message icon" />
+    <p>{message}</p>
+  </div>
+</div>
+<style>
+  .container {
+    width: 47.5%;
+    box-shadow:
+      inset -1px -1px #000000,
+      inset 1px 1px #bebebe,
+      inset -2px -2px #858585,
+      inset 2px 2px #ebebeb;
+    padding: 3px;
+    height: fit-content;
+  }
+
+  .name-bar {
+    height: 24px;
+    background-image: linear-gradient(90deg, #1c32af, #417fe3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px;
+  }
+
+  .name {
+    font-size: 1.25em;
+    font-weight: 700;
+  }
+
+  .entry-title {
+    font-size: 1em;
+    margin-left: 10px;
+    color: white;
+    font-weight: 600;
+  }
+
+  .name-bar-buttons {
+    display: flex;
+  }
+
+  .close-btn {
+    margin-left: 9px;
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+  }
+
+  .message {
+    display: flex;
+    align-items: center;
+    padding: 6px;
+  }
+
+  .msg-icon {
+    margin-right: 15px;
+  }
+</style>
