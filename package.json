@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/vercel": "^9.0.0",
     "@fontsource/ibm-plex-mono": "^5.2.7",
     "@supabase/supabase-js": "^2.78.0",
     "astro": "^5.15.2",
