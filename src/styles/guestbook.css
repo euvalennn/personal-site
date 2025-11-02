@@ -1,5 +1,6 @@
 .container {
   padding: 12px;
+  height: 75%;
 }
 
 .guestbook-title {
@@ -73,4 +74,20 @@ input:focus {
   height: 40vh;
   width: 100%;
   margin-top: 10px;
+}
+
+@media screen and (max-width: 850px) {
+  .guestbook-form {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .send-btn {
+    margin-top: 10px;
+    width: 20%;
+  }
+
+  .guestbook-entries {
+    height: 50%;
+  }
 }

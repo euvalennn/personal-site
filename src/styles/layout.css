@@ -61,6 +61,12 @@ body {
   cursor: pointer;
 }
 
+.minimize-btn-small,
+.window-btn-small,
+.close-btn-small {
+  display: none;
+}
+
 .nav-btn {
   width: 22.5%;
   height: 64px;
@@ -124,4 +130,54 @@ nav {
   margin-right: 5px;
   box-shadow: inset -3px -3px #ebebeb, inset 3px 3px #858585;
   height: 75%;
+}
+
+@media screen and (max-width: 850px) {
+  nav {
+    overflow: auto;
+    padding: 6px;
+    height: auto;
+  }
+
+  .nav-btn {
+    width: auto;
+    padding: 0 10px 0 10px;
+    font-size: 1em;
+    white-space: nowrap;
+    height: 48px;
+    margin: 0;
+    margin-right: 6px;
+  }
+
+  .title {
+    font-size: 1.25em;
+  }
+
+  .title-bar {
+    height: 32px;
+  }
+
+  .main-window {
+    width: 100%;
+    height: 100%;
+    margin: 24px;
+  }
+
+  .minimize-btn,
+  .window-btn,
+  .close-btn {
+    display: none;
+  }
+
+  .minimize-btn-small,
+  .window-btn-small {
+    display: block;
+    border-bottom: 1.5px solid black;
+    border-right: 1.5px solid black;
+  }
+
+  .close-btn-small {
+    display: block;
+    margin-left: 9px;
+  }
 }

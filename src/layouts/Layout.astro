@@ -6,6 +6,9 @@ import "@fontsource/ibm-plex-mono/700.css";
 import CloseButton from "../assets/close-button.svg";
 import MinimizeButton from "../assets/minimize-button.svg";
 import WindowButton from "../assets/window-button.svg";
+import CloseButtonSmall from "../assets/close-button-small.svg";
+import MinimizeButtonSmall from "../assets/minimize-button-small.svg";
+import WindowButtonSmall from "../assets/window-button-small.svg";
 import { Image } from "astro:assets";
 import startButton from "../assets/start-button.png";
 import moment from "moment-timezone";
@@ -38,9 +41,12 @@ if (currentPath === "/") {
         <div class="title-bar-buttons">
           <div class="minimize-and-window">
             <MinimizeButton class="minimize-btn" />
+            <MinimizeButtonSmall class="minimize-btn-small" />
             <WindowButton class="window-btn" />
+            <WindowButtonSmall class="window-btn-small" />
           </div>
           <CloseButton class="close-btn" />
+          <CloseButtonSmall class="close-btn-small" />
         </div>
       </div>
       <nav>
