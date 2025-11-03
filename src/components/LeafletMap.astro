@@ -4,6 +4,16 @@
   import L, { marker } from "leaflet";
   import "leaflet/dist/leaflet.css";
 
+  import iconUrl from "leaflet/dist/images/marker-icon.png";
+  import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
+  import shadowUrl from "leaflet/dist/images/marker-shadow.png";
+
+  L.Icon.Default.mergeOptions({
+    iconUrl,
+    iconRetinaUrl,
+    shadowUrl,
+  });
+
   let map = L.map("map").setView([-7.9566216, -69.0353433], 2);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution:
