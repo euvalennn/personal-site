@@ -325,6 +325,14 @@
       document.getElementById("DVModal")!.style.display = "flex";
     });
   });
+
+  const markerImages = document.getElementsByClassName("leaflet-marker-icon");
+  for (let i = 0; i < markerImages.length; i++) {
+    if (markerImages[i] instanceof HTMLImageElement) {
+      (markerImages[i] as HTMLImageElement).src =
+        "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png";
+    }
+  }
 </script>
 <style>
   #map {
@@ -332,9 +340,6 @@
     height: 500px;
   }
 
-  .leaflet-marker-icon {
-    background-image: url(https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png);
-  }
   @media screen and (max-width: 850px) {
     #map {
       height: 70vh;
