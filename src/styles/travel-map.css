@@ -5,6 +5,10 @@
   justify-content: center;
 }
 
+.leaflet-shadow-pane {
+  display: none !important;
+}
+
 .modal {
   display: none;
   position: fixed;
