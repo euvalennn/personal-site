@@ -1,5 +1,4 @@
 ---
-export const prerender = false;
 import "../styles/layout.css";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/600.css";
@@ -12,19 +11,23 @@ import MinimizeButtonSmall from "../assets/minimize-button-small.svg";
 import WindowButtonSmall from "../assets/window-button-small.svg";
 import { Image } from "astro:assets";
 import startButton from "../assets/start-button.png";
-import moment from "moment-timezone";
-const argentinaTime = moment()
-  .tz("America/Argentina/Buenos_Aires")
-  .format("h:mm a");
+import LocalTime from "../components/LocalTime.astro";
 const currentPath = Astro.url.pathname;
 let inAboutPage = false;
 let inGuestbookPage = false;
+let inTravelPage = false;
 if (currentPath === "/") {
   inAboutPage = true;
   inGuestbookPage = false;
+  inTravelPage = false;
 } else if (currentPath === "/guestbook") {
   inAboutPage = false;
   inGuestbookPage = true;
+  inTravelPage = false;
+} else if (currentPath === "/travel-map") {
+  inAboutPage = false;
+  inGuestbookPage = false;
+  inTravelPage = true;
 }
 ---
 
@@ -56,7 +59,14 @@ if (currentPath === "/") {
           class:list={["about-me-btn", "nav-btn", inAboutPage && "nav-active"]}
           >about me.html</a
         >
-        <a href="#" class="nav-btn">todo.html</a>
+        <a
+          href="/travel-map"
+          class:list={[
+            "travel-map-btn",
+            "nav-btn",
+            inTravelPage && "nav-active",
+          ]}>travel map.html</a
+        >
         <a
           href="/guestbook"
           class:list={[
@@ -73,7 +83,7 @@ if (currentPath === "/") {
       <div class="startbutton">
         <Image src={startButton} alt="windows 98 start button" />
       </div>
-      <div class="local-time">{argentinaTime}</div>
+      <LocalTime />
     </div>
   </body>
 </html>

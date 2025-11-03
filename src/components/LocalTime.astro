@@ -1,0 +1,9 @@
+<div class="local-time"></div>
+<script>
+  import moment from "moment-timezone";
+  const argentinaTime = moment()
+    .tz("America/Argentina/Buenos_Aires")
+    .format("h:mm a");
+  const timeDiv = document.querySelector(".local-time");
+  timeDiv!.innerHTML = argentinaTime;
+</script>

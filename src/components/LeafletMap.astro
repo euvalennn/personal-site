@@ -1,0 +1,332 @@
+---
+import "leaflet/dist/leaflet.css";
+---
+
+<div id="map"></div>
+
+<script>
+  import L, { marker } from "leaflet";
+
+  let map = L.map("map").setView([-7.9566216, -69.0353433], 2);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution:
+      '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  }).addTo(map);
+
+  const BAMarker = L.marker([-34.6043547, -58.3841082])
+    .addTo(map)
+    .bindPopup(`<span style="cursor: pointer" id="BASpan">Buenos Aires</span>`);
+  const vcpMarker = L.marker([-31.4202264, -64.5019079])
+    .addTo(map)
+    .bindPopup(
+      `<span style="cursor: pointer" id="vcpSpan">Villa Carlos Paz</span>`
+    );
+  const bariMarker = L.marker([-41.1348959, -71.3158741])
+    .addTo(map)
+    .bindPopup(`<span style="cursor: pointer" id="bariSpan">Bariloche</span>`);
+  const santiagoMarker = L.marker([-27.7848739, -64.2666626])
+    .addTo(map)
+    .bindPopup(
+      `<span style="cursor: pointer" id="santiagoSpan">Santiago del Estero</span>`
+    );
+  const tafiMarker = L.marker([-26.8517309, -65.7101035])
+    .addTo(map)
+    .bindPopup(
+      `<span style="cursor: pointer" id="tafiSpan">Tafí del Valle</span>`
+    );
+  const cafayateMarker = L.marker([-26.072316, -65.978258])
+    .addTo(map)
+    .bindPopup(
+      `<span style="cursor: pointer" id="cafayateSpan">Cafayate</span>`
+    );
+  const saltaMarker = L.marker([-24.7828391, -65.4297519])
+    .addTo(map)
+    .bindPopup(`<span style="cursor: pointer" id="saltaSpan">Salta</span>`);
+  const purmaMarker = L.marker([-23.7466466, -65.5001101])
+    .addTo(map)
+    .bindPopup(
+      `<span style="cursor: pointer" id="purmaSpan">Purmamarca</span>`
+    );
+  const rosarioMarker = L.marker([-32.9584366, -60.7079197])
+    .addTo(map)
+    .bindPopup(`<span style="cursor: pointer" id="rosarioSpan">Rosario</span>`);
+  const iguazuMarker = L.marker([-25.5172402, -54.5872776])
+    .addTo(map)
+    .bindPopup(
+      `<span style="cursor: pointer" id="iguazuSpan">Foz do Iguaçu</span>`
+    );
+  const vgbMarker = L.marker([-31.9778896, -64.5610881])
+    .addTo(map)
+    .bindPopup(
+      `<span style="cursor: pointer" id="vgbSpan">Villa Gral. Belgrano</span>`
+    );
+  const cancunMarker = L.marker([21.1611538, -86.8533244])
+    .addTo(map)
+    .bindPopup(`<span style="cursor: pointer" id="cancunSpan">Cancún</span>`);
+  const orlandoMarker = L.marker([28.537036, -81.3802828])
+    .addTo(map)
+    .bindPopup(`<span style="cursor: pointer" id="orlandoSpan">Orlando</span>`);
+  const LAMarker = L.marker([34.0529474, -118.256814])
+    .addTo(map)
+    .bindPopup(`<span style="cursor: pointer" id="LASpan">Los Angeles</span>`);
+  const SFMarker = L.marker([37.7740937, -122.4258719])
+    .addTo(map)
+    .bindPopup(
+      `<span style="cursor: pointer" id="SFSpan">San Francisco</span>`
+    );
+  const miamiMarker = L.marker([25.7625996, -80.1982486])
+    .addTo(map)
+    .bindPopup(`<span style="cursor: pointer" id="miamiSpan">Miami</span>`);
+  const LVMarker = L.marker([36.1698227, -115.1465919])
+    .addTo(map)
+    .bindPopup(`<span style="cursor: pointer" id="LVSpan">Las Vegas</span>`);
+  const grandCanyonMarker = L.marker([36.0998639, -112.1136508])
+    .addTo(map)
+    .bindPopup(
+      `<span style="cursor: pointer" id="grandCanyonSpan">Grand Canyon</span>`
+    );
+  const sequoiaMarker = L.marker([36.4882694, -118.5702591])
+    .addTo(map)
+    .bindPopup(
+      `<span style="cursor: pointer" id="sequoiaSpan">Sequoia National Park</span>`
+    );
+  const yosemiteMarker = L.marker([37.8651328, -119.5432649])
+    .addTo(map)
+    .bindPopup(
+      `<span style="cursor: pointer" id="yosemiteSpan">Yosemite National Park</span>`
+    );
+  const bassLakeMarker = L.marker([37.3308217, -119.5777122])
+    .addTo(map)
+    .bindPopup(
+      `<span style="cursor: pointer" id="bassLakeSpan">Bass Lake</span>`
+    );
+  const montereyMarker = L.marker([36.598169, -121.8984169])
+    .addTo(map)
+    .bindPopup(
+      `<span style="cursor: pointer" id="montereySpan">Monterey</span>`
+    );
+  const DVMarker = L.marker([36.5004633, -117.0867972])
+    .addTo(map)
+    .bindPopup(
+      `<span style="cursor: pointer" id="DVSpan">Death Valley National Park</span>`
+    );
+
+  BAMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#BASpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("BAModal")!.style.display = "flex";
+    });
+  });
+  vcpMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#vcpSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("vcpModal")!.style.display = "flex";
+    });
+  });
+  bariMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#bariSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("bariModal")!.style.display = "flex";
+    });
+  });
+  santiagoMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#santiagoSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("santiagoModal")!.style.display = "flex";
+    });
+  });
+  tafiMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#tafiSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("tafiModal")!.style.display = "flex";
+    });
+  });
+  cafayateMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#cafayateSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("cafayateModal")!.style.display = "flex";
+    });
+  });
+  saltaMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#saltaSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("saltaModal")!.style.display = "flex";
+    });
+  });
+  purmaMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#purmaSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("purmaModal")!.style.display = "flex";
+    });
+  });
+  rosarioMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#rosarioSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("rosarioModal")!.style.display = "flex";
+    });
+  });
+  iguazuMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#iguazuSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("iguazuModal")!.style.display = "flex";
+    });
+  });
+  vgbMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#vgbSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("vgbModal")!.style.display = "flex";
+    });
+  });
+  cancunMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#cancunSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("cancunModal")!.style.display = "flex";
+    });
+  });
+  orlandoMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#orlandoSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("orlandoModal")!.style.display = "flex";
+    });
+  });
+  LAMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#LASpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("LAModal")!.style.display = "flex";
+    });
+  });
+  SFMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#SFSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("SFModal")!.style.display = "flex";
+    });
+  });
+  miamiMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#miamiSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("miamiModal")!.style.display = "flex";
+    });
+  });
+  LVMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#LVSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("LVModal")!.style.display = "flex";
+    });
+  });
+  grandCanyonMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#grandCanyonSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("grandCanyonModal")!.style.display = "flex";
+    });
+  });
+  sequoiaMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#sequoiaSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("sequoiaModal")!.style.display = "flex";
+    });
+  });
+  yosemiteMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#yosemiteSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("yosemiteModal")!.style.display = "flex";
+    });
+  });
+  bassLakeMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#bassLakeSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("bassLakeModal")!.style.display = "flex";
+    });
+  });
+  montereyMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#montereySpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("montereyModal")!.style.display = "flex";
+    });
+  });
+  DVMarker.on("popupopen", (e) => {
+    const popup = e.popup.getElement();
+    const span = popup!.querySelector("#DVSpan");
+    if (!span) return;
+
+    span.addEventListener("click", () => {
+      document.getElementById("DVModal")!.style.display = "flex";
+    });
+  });
+</script>
+<style>
+  #map {
+    width: 100%;
+    height: 500px;
+  }
+  @media screen and (max-width: 850px) {
+    #map {
+      height: 70vh;
+    }
+  }
+</style>
