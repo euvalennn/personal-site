@@ -16,18 +16,27 @@ const currentPath = Astro.url.pathname;
 let inAboutPage = false;
 let inGuestbookPage = false;
 let inTravelPage = false;
+let inFunPage = false;
 if (currentPath === "/") {
   inAboutPage = true;
   inGuestbookPage = false;
   inTravelPage = false;
+  inFunPage = false;
 } else if (currentPath === "/guestbook") {
   inAboutPage = false;
   inGuestbookPage = true;
   inTravelPage = false;
+  inFunPage = false;
 } else if (currentPath === "/travel-map") {
   inAboutPage = false;
   inGuestbookPage = false;
   inTravelPage = true;
+  inFunPage = false;
+} else if (currentPath === "/fun-stuff") {
+  inAboutPage = false;
+  inGuestbookPage = false;
+  inTravelPage = false;
+  inFunPage = true;
 }
 ---
 
@@ -81,7 +90,11 @@ if (currentPath === "/") {
             inGuestbookPage && "nav-active",
           ]}>guestbook.html</a
         >
-        <a href="#" class="nav-btn">todo.html</a>
+        <a
+          href="/fun-stuff"
+          class:list={["fun-stuff-btn", "nav-btn", inFunPage && "nav-active"]}
+          >fun stuff.html</a
+        >
       </nav>
       <slot />
     </div>
