@@ -1,0 +1,40 @@
+---
+const { short_desc, long_desc, temperature, feels_like, icon } = Astro.props;
+---
+
+<div class="weather-container widget-container">
+  <img
+    src=`/weather-icons/${icon}.png`
+    alt="current weather status icon"
+    class="weather-icon"
+  />
+  <div class="weather-stats">
+    <p><span class="main-weather">{short_desc}</span> - {long_desc}</p>
+    <p>
+      <span class="main-temp">{temperature}°</span> - feels like {feels_like}°
+    </p>
+  </div>
+</div>
+<style>
+  .weather-container {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    padding: 16px;
+  }
+
+  .weather-icon {
+    height: 64px;
+    width: 64px;
+  }
+
+  .main-weather,
+  .main-temp {
+    font-weight: 700;
+    font-size: 1.25em;
+  }
+
+  .weather-stats {
+    margin-left: 20px;
+  }
+</style>

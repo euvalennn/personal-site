@@ -132,11 +132,17 @@ nav {
   height: 75%;
 }
 
+.commit-text {
+  font-style: italic;
+  color: #555555;
+}
+
 @media screen and (max-width: 850px) {
   nav {
-    overflow: auto;
+    overflow-x: auto;
     padding: 6px;
     height: auto;
+    min-height: 48px;
   }
 
   .nav-btn {
@@ -179,5 +185,9 @@ nav {
   .close-btn-small {
     display: block;
     margin-left: 9px;
+  }
+
+  .commit-text {
+    font-size: 0.75em;
   }
 }
