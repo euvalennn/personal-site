@@ -10,8 +10,21 @@ const { short_desc, long_desc, temperature, feels_like, icon } = Astro.props;
   />
   <div class="weather-stats">
     <p><span class="main-weather">{short_desc}</span> - {long_desc}</p>
-    <p>
+    <p style="margin-bottom: 5px">
       <span class="main-temp">{temperature}°</span> - feels like {feels_like}°
+    </p>
+    <p class="weather-credits">
+      icons by MalekMasoud on <a
+        style="color: #333333"
+        href="https://www.deviantart.com/malekmasoud/art/Windows-9x-Styled-Weather-Icons-929048851"
+        >DeviantArt</a
+      >
+    </p>
+    <p class="weather-credits">
+      weather data from <a
+        style="color: #333333"
+        href="https://openweathermap.org">openweathermap.org</a
+      >
     </p>
   </div>
 </div>
@@ -26,6 +39,12 @@ const { short_desc, long_desc, temperature, feels_like, icon } = Astro.props;
   .weather-icon {
     height: 64px;
     width: 64px;
+  }
+
+  .weather-credits {
+    margin: 0;
+    font-size: 0.75em;
+    color: #333333;
   }
 
   .main-weather,
