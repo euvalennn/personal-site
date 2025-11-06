@@ -494,6 +494,8 @@ import "../styles/travel-map.css";
   </div>
 </Layout>
 <script>
+  const travelNavBtn = document.querySelector(".travel-map-btn");
+  travelNavBtn!.classList.add("nav-active");
   const closeBtn = document.getElementsByClassName("close-btn");
   const closeBtnSmall = document.getElementsByClassName("close-btn-small");
   for (let i = 0; i < closeBtn.length; i++) {
