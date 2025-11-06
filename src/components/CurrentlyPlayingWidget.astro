@@ -50,4 +50,20 @@ const { name, artist, cover_art, album } = Astro.props;
     font-size: 1em;
     color: #777777;
   }
+
+  @media screen and (max-width: 850px) {
+    .spotify-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cover-art {
+      max-width: 200px;
+      margin-bottom: 15px;
+    }
+
+    .song-info {
+      margin: 0;
+    }
+  }
 </style>

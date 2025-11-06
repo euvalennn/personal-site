@@ -16,7 +16,6 @@
 
 .left-side {
   width: 60%;
-  height: 100%;
 }
 
 .right-side {
@@ -29,7 +28,6 @@
     inset -6px -6px #858585, inset 6px 6px #ebebeb;
   padding: 9px;
   margin: 6px;
-  height: 50%;
 }
 
 .widget-container {
@@ -39,5 +37,22 @@
 .cat-container {
   display: flex;
   justify-content: center;
-  height: 50%;
+}
+
+@media screen and (max-width: 850px) {
+  .container {
+    flex-direction: column;
+    overflow: auto;
+    height: 75%;
+  }
+
+  .left-side,
+  .right-side {
+    width: 100%;
+    height: auto;
+  }
+
+  .widget .title-bar {
+    font-size: 1em;
+  }
 }

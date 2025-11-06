@@ -44,7 +44,7 @@ const { name, message } = Astro.props;
   }
 
   .entry-title {
-    font-size: 1em;
+    font-size: 0.75em;
     margin-left: 10px;
     color: white;
     font-weight: 600;
@@ -74,6 +74,10 @@ const { name, message } = Astro.props;
   @media screen and (max-width: 850px) {
     .entry-title {
       font-size: 0.75em;
+    }
+
+    .name-bar {
+      height: auto;
     }
   }
 </style>
