@@ -1,6 +1,10 @@
 # my personal website!
 this repo contains all the code for my personal site!! it was built using [astro](https://astro.build), with no other additional UI frameworks added  
-made by me (valen) with love ❤️
+made by me (valen) with love ❤️  
+
+[![button-bw](https://github.com/user-attachments/assets/fba8bcd9-fbd6-4ce9-aea4-fe31ea29736b)](https://valen.zip)
+[![button-win98](https://github.com/user-attachments/assets/793f485c-442a-4cb8-be86-b3ba07b906c3)](https://valen.zip)  
+*click [here](#88x31-buttons-links) for links to both buttons! you're more than welcome to include them in your website :3*
 
 ## features / pages
 - **about me:** has a bit of info about me and the stuff i like doing as well as a few contact methods
@@ -19,3 +23,7 @@ cat images are fetched from the [cataas.com](https://cataas.com) api
 ms paint widget is from [jspaint.app](https://jspaint.app)  
 weather icons made by MalekMasoud on [DeviantArt](https://www.deviantart.com/malekmasoud/art/Windows-9x-Styled-Weather-Icons-929048851)  
 weather data from [openweathermap](https://openweathermap.org) api  
+
+## 88x31 buttons links
+black and white version: https://valen.zip/button-bw.gif  
+win98 version: https://valen.zip/button-win98.gif
