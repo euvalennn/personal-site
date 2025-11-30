@@ -47,6 +47,7 @@ if (currentPath === "/") {
     />
   </head>
   <body>
+    <div id="start-menu-overlay"></div>
     <div class="main-window">
       <div class="title-bar">
         <h1 class="title">valen's site.exe</h1>
@@ -85,7 +86,7 @@ if (currentPath === "/") {
       <slot />
     </div>
     <div class="taskbar">
-      <div class="startbutton">
+      <div id="start-btn" class="startbutton">
         <Image src={startButton} alt="windows 98 start button" />
       </div>
       <p class="commit-text">
@@ -95,5 +96,128 @@ if (currentPath === "/") {
       </p>
       <LocalTime />
     </div>
+    <div id="start-menu" class="start-menu" style="display: none;">
+      <div class="title-container">
+        <h1 class="start-title">
+          valen<span style="font-weight: 400;">.zip</span>
+        </h1>
+      </div>
+      <div class="menu-container" style="margin-left: 10px;">
+        <h1 style="font-size: 1.5em; margin-bottom: 0;">
+          88x31 buttons are fun!!
+        </h1><p style="font-size: 1.1em; margin-top: 0;">
+          send me an <a href="mailto:hi@valen.zip" style="color: black;"
+            >email</a
+          > if you want yours here :3
+        </p>
+        <div class="buttons">
+          <div class="my-btns" style="margin-bottom: 10px;">
+            <div class="btn-imgs">
+              <a href="#"
+                ><img
+                  src="/button-bw.gif"
+                  alt="valen's site's black and white 88x31 button"
+                  id="button-bw"
+                /></a
+              >
+              <a href="#"
+                ><img
+                  src="/button-win98.gif"
+                  alt="valen's site's windows 98 themed 88x31 button"
+                  id="button-win98"
+                /></a
+              >
+            </div>
+            <p
+              id="copy-text"
+              style="margin: 0; font-style: italic; font-size: 0.8em;"
+            >
+              click either of my buttons to copy them!
+            </p>
+          </div>
+          <div class="more-btns" style="overflow: auto;">
+            <a href="https://aconlin.com"
+              ><img src="/88x31/acon.gif" alt="acon's button" /></a
+            >
+            <a href="https://vvqb.dev"
+              ><img src="/88x31/vivi.gif" alt="vivi's button" /></a
+            >
+            <a href="https://gideon.sh"
+              ><img
+                src="https://gideon.sh/88x31.gif"
+                alt="gideon's button"
+              /></a
+            >
+            <a href="https://bomberfish.ca"
+              ><img
+                src="https://bomberfish.ca/button.gif"
+                alt="bomberfish's button"
+              /></a
+            >
+            <a href="https://codingcorner.dev"
+              ><img
+                src="https://www.codingcorner.dev/buttons/codingcorner.png"
+                alt="kyle's button"
+              /></a
+            >
+            <a href="https://tarfish.github.io"
+              ><img src="/88x31/sarvesh.png" alt="sarvesh's button" /></a
+            >
+            <a href="https://os.slitrostudio.me"
+              ><img
+                src="https://site.slitrostudio.me/Slitro2.png"
+                alt="josh's button"
+                width="88px"
+                height="31px"
+              /></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
+  <script>
+    document.getElementById("button-bw")!.addEventListener("click", () => {
+      const copyText = document.getElementById("copy-text");
+      const code =
+        '<a href="https://www.valen.zip"><img src="https://www.valen.zip/button-bw.gif" alt="valen\'s site\'s black and white 88x31 button" /></a>';
+      try {
+        navigator.clipboard.writeText(code);
+        copyText!.textContent = "copied!";
+        setTimeout(() => {
+          copyText!.textContent = "click either of my buttons to copy them!";
+        }, 2000);
+      } catch (err) {
+        console.error("failed to copy");
+      }
+    });
+    document.getElementById("button-win98")!.addEventListener("click", () => {
+      const copyText = document.getElementById("copy-text");
+      const code =
+        '<a href="https://www.valen.zip"><img src="https://www.valen.zip/button-win98.gif" alt="valen\'s site\'s windows 98 themed 88x31 button" /></a>';
+      try {
+        navigator.clipboard.writeText(code);
+        copyText!.textContent = "copied!";
+        setTimeout(() => {
+          copyText!.textContent = "click either of my buttons to copy them!";
+        }, 2000);
+      } catch (err) {
+        console.error("failed to copy");
+      }
+    });
+    document.getElementById("start-btn")!.addEventListener("click", () => {
+      const startMenu = document.getElementById("start-menu");
+      const startBtn = document.getElementById("start-btn");
+      const startMenuOverlay = document.getElementById("start-menu-overlay");
+      if (startMenu!.style.display === "none") {
+        startMenu!.style.display = "flex";
+        startBtn!.classList.add("active");
+        startMenuOverlay!.classList.add("overlay-active");
+      } else {
+        startMenu!.style.display = "none";
+        startBtn!.classList.remove("active");
+        startMenuOverlay!.classList.remove("overlay-active");
+      }
+    });
+  </script>
 </html>
