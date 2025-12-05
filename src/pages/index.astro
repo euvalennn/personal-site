@@ -6,7 +6,37 @@ import AboutMe from "../components/about-me.astro";
 import TravelMap from "../components/travel-map.astro";
 import Guestbook from "../components/guestbook.astro";
 import FunStuff from "../components/fun-stuff.astro";
+import { supabase } from "../lib/supabase";
 import "../styles/index.css";
+
+const errors = { name: "", message: "" };
+
+if (Astro.request.method === "POST") {
+  try {
+    const msg = await Astro.request.formData();
+    const entry_name = msg.get("name");
+    const entry_message = msg.get("message");
+    if (typeof entry_name !== "string" || entry_name.length < 1) {
+      errors.name += "please enter your name!";
+    }
+    if (typeof entry_message !== "string" || entry_message.length < 1) {
+      errors.message += "btw you forgot to put a message :p";
+    }
+    const hasErrors = Object.values(errors).some((err) => err);
+    if (!hasErrors) {
+      const { error } = await supabase
+        .from("guestbook_entries")
+        .insert({ name: entry_name, message: entry_message });
+      if (error) {
+        console.error(error);
+      }
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
 ---
 
 <Layout>

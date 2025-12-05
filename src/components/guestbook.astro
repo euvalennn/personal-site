@@ -3,35 +3,7 @@ import GuestbookMessage from "../components/GuestbookMessage.astro";
 import { supabase } from "../lib/supabase.ts";
 import "../styles/guestbook.css";
 
-const errors = { name: "", message: "" };
-if (Astro.request.method === "POST") {
-  try {
-    const msg = await Astro.request.formData();
-    const entry_name = msg.get("name");
-    const entry_message = msg.get("message");
-    if (typeof entry_name !== "string" || entry_name.length < 1) {
-      errors.name += "please enter your name!";
-    }
-    if (typeof entry_message !== "string" || entry_message.length < 1) {
-      errors.message += "btw you forgot to put a message :p";
-    }
-    const hasErrors = Object.values(errors).some((err) => err);
-    if (!hasErrors) {
-      const { error } = await supabase
-        .from("guestbook_entries")
-        .insert({ name: entry_name, message: entry_message });
-      if (error) {
-        console.error(error);
-      }
-    }
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-  }
-}
-
-const { data, error } = await supabase.from("guestbook_entries").select();
+const { data } = await supabase.from("guestbook_entries").select();
 
 const guestbook_entries = data!.reverse();
 ---
@@ -49,10 +21,6 @@ const guestbook_entries = data!.reverse();
     </label>
     <button class="send-btn">send</button>
   </form>
-  <div class="err-msgs">
-    {errors.name && <p class="name-err-msg">{errors.name}</p>}
-    {errors.message && <p class="message-err-msg">{errors.message}</p>}
-  </div>
   <div class="guestbook-entries">
     {
       guestbook_entries!.map((entry) => (
