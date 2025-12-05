@@ -1,9 +1,48 @@
-<div class="local-time"></div>
+---
+import { Image } from "astro:assets";
+import battery from "../assets/battery.png";
+---
+
+<div class="local-time">
+  <Image
+    src={battery}
+    alt="windows 98 battery icon"
+    style="max-height: 24px; width: auto;"
+  />
+  <div class="battery-percentage" style="margin-right: 10px;"></div>
+  <img
+    src="/sound-unmuted.png"
+    class="sound-btn unmuted"
+    alt="windows 98 unmuted loudspeaker icon"
+    style="max-width: 24px; height: auto; margin-right: 5px;"
+  />
+</div>
 <script>
   import moment from "moment-timezone";
   const argentinaTime = moment()
     .tz("America/Argentina/Buenos_Aires")
     .format("h:mm a");
   const timeDiv = document.querySelector(".local-time");
-  timeDiv!.innerHTML = argentinaTime;
+  timeDiv!.innerHTML += argentinaTime;
+  const batteryDiv = document.querySelector(".battery-percentage");
+  if ("getBattery" in navigator) {
+    (navigator as any).getBattery().then(function (batteryManager: any) {
+      batteryDiv!.innerHTML += batteryManager.level * 100 + "%";
+    });
+  } else {
+    console.warn("Battery level not available");
+    batteryDiv!.innerHTML += "N/A";
+  }
+  const soundBtn = document.querySelector(".sound-btn");
+  soundBtn!.addEventListener("click", () => {
+    if (soundBtn!.classList[1] === "unmuted") {
+      soundBtn!.classList.remove("unmuted");
+      (soundBtn as HTMLImageElement).src = "/sound-muted.png";
+      soundBtn!.classList.add("muted");
+    } else {
+      soundBtn!.classList.remove("muted");
+      (soundBtn as HTMLImageElement).src = "/sound-unmuted.png";
+      soundBtn!.classList.add("unmuted");
+    }
+  });
 </script>

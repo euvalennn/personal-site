@@ -5,7 +5,7 @@ import { Image } from "astro:assets";
 const { name, message } = Astro.props;
 ---
 
-<div class="container">
+<div class="message-container">
   <div class="name-bar">
     <h1 class="entry-title"><span class="name">{name}</span> said...</h1>
     <div class="name-bar-buttons">
@@ -18,7 +18,7 @@ const { name, message } = Astro.props;
   </div>
 </div>
 <style>
-  .container {
+  .message-container {
     width: 47.5%;
     box-shadow:
       inset -1px -1px #000000,

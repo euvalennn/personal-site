@@ -1,0 +1,512 @@
+---
+import LeafletMap from "../components/LeafletMap.astro";
+import CloseButton from "../assets/close-button.svg";
+import CloseButtonSmall from "../assets/close-button-small.svg";
+import "../styles/travel-map.css";
+---
+
+<div class="travel-map-container">
+  <div id="BAModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Buenos Aires</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          this is the capital city of my country!! i haven't really spent a lot
+          of time here since most of the times i've been here were for paperwork
+          stuff or going to the airport lol
+        </p>
+        <p>regardless of that it's a pretty nice city!</p>
+      </div>
+    </div>
+  </div>
+  <div id="vcpModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Villa Carlos Paz</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          really nice touristic city in córdoba! i don't really have a lot of
+          pictures and landscape wise it's not the most impressing city but it's
+          a fun city to go to on like a weekend trip :D
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="bariModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Bariloche</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          beautiful city on southern argentina! it's been a long time since i've
+          been here but regardless of that it has beautiful landscapes and views
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="santiagoModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Santiago del Estero</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          i've only been here once and it's because we had to sleep during a
+          roadtrip so it wasn't really a planned trip. it's just a regular city
+          not really much to say about it, i don't think i even have pictures of
+          it lol
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="tafiModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Tafí del Valle</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          i've been here on a roadtrip across northern argentina! the town
+          itself is really small but the views are really really nice, it's a
+          little hard to breathe because of the altitude though haha
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="cafayateModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Cafayate</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          stopped here on a roadtrip to have something to eat, didn't really go
+          around town much. i can say i had some really good empanadas here
+          though lmao
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="saltaModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Salta</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          largest city we stopped at during our roadtrip across northern
+          argentina! to be honest the city wasn't that nice, like we were
+          expecting it to be something else and it was just a regular city like
+          any other, we did go to a few museums and cultural landmarks though so
+          that's neat
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="purmaModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Purmamarca</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          last stop in our roadtrip before heading back home!! the town itself
+          was super small but it had some amazing views, though if i'm being
+          honest it was pretty boring spending 3 days without internet, too
+          peaceful for me lol
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="rosarioModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Rosario</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          this is the largest city in my province, i've only been here like once
+          or twice and it was just a school trip iirc
+        </p>
+        <p>
+          not much to say about it, most remarkable thing in here is the flag
+          monument i guess lol
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="iguazuModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Foz do Iguaçu</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          we stopped in this city to visit the iguazu falls in the border
+          between brazil and argentina!! they're really beautiful, we visited
+          both brazil's and argentina's national parks
+        </p>
+        <p>
+          only bad thing is we spent like a week here and there wasn't much to
+          do apart from visiting the falls so we went back home earlier
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="vgbModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Villa Gral. Belgrano</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          nice touristic town 80km south of córdoba city, we've been here with
+          my family a lot of times but most of them were when i was younger so i
+          don't really remember much. i do know i took my first steps here so
+          that's cool :D
+        </p>
+        <p>
+          the town overall has a lot of german influence in the architecture and
+          culture, and i know that they host an oktoberfest beer party or
+          something like that every year
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="cancunModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Cancún</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          we've been here a couple of times with my family on vacation, it's
+          been a couple of years since we've last went so i don't remember much
+          if i'm being honest last time i've been here i was 12 years old
+        </p>
+        <p>
+          i do remember we went to a few parks and excursions and stuff like
+          that though it was really fun!
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="orlandoModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Orlando</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          we've been here once to visit disneyworld and universal! we got to
+          visit all 4 main disney parks and the two universal orlando parks
+        </p>
+        <p>
+          it was a lot of fun!! we didn't get a lot of sleep because we had to
+          go to each park one day after another but regardless of that it was
+          really fun :3
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="LAModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Los Angeles</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          first stop on our west coast roadtrip!! we went around the city and
+          visited the warner bros studios, the griffith observatory, the walk of
+          fame and a wax museum in hollywood and a bunch of other places
+        </p>
+        <p>
+          the city was really nice except for the smell and the traffic but
+          other than that we had a really good time here!
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="SFModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">San Francisco</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          last city on our west coast roadtrip before we headed back to LAX!
+          really nice city i loved it here!!
+        </p>
+        <p>
+          we went to pier 39, crossed the golden gate bridge, visited alamo
+          square and the golden gate park, took a ferry to alcatraz island, we
+          also went to ghiardelli's chocolate or whatever it's called, and a few
+          more places but i can't remember rn lol
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="miamiModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Miami</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          i've only been here once for a few days after visiting orlando, we
+          spent most of those days hanging out at the beach
+        </p>
+        <p>
+          if i'm being honest i got a little bored because the beach isn't
+          really my thing but it was nice to visit anyways :D
+        </p>
+        <p>
+          also flights from argentina to miami are really cheap so that's nice
+          lol
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="LVModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Las Vegas</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          second stop on our roadtrip!! it was really impressing to see all the
+          lights and buildings after driving through the desert for like 3 hours
+          straight
+        </p>
+        <p>
+          we had a really good time here! we went to see the cirque du soleil
+          show and also went to the sphere
+        </p>
+        <p>we didn't go to any casinos though we don't gamble lol</p>
+      </div>
+    </div>
+  </div>
+  <div id="grandCanyonModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Grand Canyon</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          we visited the grand canyon while we were staying at las vegas, it was
+          like a 5 hour drive iirc
+        </p>
+        <p>
+          the views were really nice but it was super cold and full of snow we
+          headed back to las vegas after like half an hour lol
+        </p>
+        <p>
+          oh also we saw some deer in the snow on our way out!! that was really
+          cute :3
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="sequoiaModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Sequoia National Park</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>tallest tree in the world! not much more to say about it haha</p>
+        <p>
+          we couldn't even fit the entire tree in a picture without using 0.5 it
+          really was taller than i expected
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="yosemiteModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Yosemite National Park</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          beautiful landscape! we spent a couple of hours going around the park
+          and the views got better the more we walked
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="bassLakeModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Bass Lake</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          nice little town in central california. we stayed here because it was
+          near yosemite and the sequoia national park
+        </p>
+        <p>
+          we didn't spend a lot of time in the town itself but we did visit the
+          lake, that was pretty nice
+        </p>
+        <p>
+          also there were a lot of bear pawprints near the lake!! that was
+          really cute. we didn't get to see any actual bears though sadly
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="montereyModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Monterey</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          we stopped here on our way back to LAX from SF! we only visited the
+          pier though
+        </p>
+        <p>to be honest there's not much to say about it lol</p>
+        <p>
+          the restaurant we had lunch at in the pier was really nice yall should
+          go there
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="DVModal" class="modal">
+    <div class="modal-content">
+      <div class="title-bar">
+        <h1 class="title">Death Valley National Park</h1>
+        <div class="title-bar-buttons">
+          <CloseButton class="travel-close-btn" />
+          <CloseButtonSmall class="travel-close-btn-small" />
+        </div>
+      </div>
+      <div class="modal-container">
+        <p>
+          on our way to bass lake from las vegas we decided to go through here
+        </p>
+        <p>
+          tbh i wouldn't go here again sure the place is nice and all but we
+          literally had to drive like 5 hours straight through the desert with
+          no coverage or gas stations or anything at all and it was super hot 😭
+        </p>
+      </div>
+    </div>
+  </div>
+  <LeafletMap />
+</div>
+<script>
+  const closeBtn = document.getElementsByClassName("travel-close-btn");
+  const closeBtnSmall = document.getElementsByClassName(
+    "travel-close-btn-small"
+  );
+  for (let i = 0; i < closeBtn.length; i++) {
+    closeBtn[i].addEventListener("click", () => {
+      closeBtn[
+        i
+      ].parentElement!.parentElement!.parentElement!.parentElement!.style.display =
+        "none";
+    });
+  }
+  for (let i = 0; i < closeBtnSmall.length; i++) {
+    closeBtnSmall[i].addEventListener("click", () => {
+      closeBtnSmall[
+        i
+      ].parentElement!.parentElement!.parentElement!.parentElement!.style.display =
+        "none";
+    });
+  }
+</script>

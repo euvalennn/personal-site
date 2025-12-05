@@ -1,52 +1,132 @@
 ---
+export const prerender = true;
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
-import pfpImage from "../assets/pfp.jpeg";
+import MainWindow from "../layouts/MainWindow.astro";
+import AboutMe from "../components/about-me.astro";
+import TravelMap from "../components/travel-map.astro";
+import Guestbook from "../components/guestbook.astro";
+import FunStuff from "../components/fun-stuff.astro";
 import "../styles/index.css";
 ---
 
 <Layout>
-  <div class="container">
-    <div class="left-side">
-      <div class="introduction">
-        <h1 class="intro-title">hey there! i'm valen</h1>
-        <h2 class="intro-info">(he/him, 16 y/o from argentina)</h2>
-      </div>
-      <div class="interests">
-        <h2 class="interests-title">here's some of the stuff i like doing:</h2>
-        <ul class="interests-list">
-          <li class="interest-item">
-            play videogames (deltarune, sometimes splatoon but not much lately)
-          </li>
-          <li class="interest-item">
-            listen to music (would name artists but my music taste changes daily
-            lol)
-          </li>
-          <li class="interest-item">do projects! mainly hardware stuff now</li>
-          <li class="interest-item">watch movies and tv shows</li>
-          <li class="interest-item">hang out with friends</li>
-          <li class="interest-item">think and overthink</li>
-        </ul>
-      </div>
-    </div>
-    <div class="right-side">
-      <Image src={pfpImage} alt="valen's profile picture" class="pfp-img" />
-      <div class="socials">
-        <ul class="socials-list">
-          <li class="socials-item gh-user">
-            <a class="gh-profile-url" href="https://github.com/euvalennn/"
-              >euvalennn</a
-            >
-          </li>
-          <li class="socials-item slack-user">@valen at hack club</li>
-          <li class="socials-item email-addr">
-            <a
-              href="mailto:hi@valen.zip"
-              style="color: black; text-decoration: none;">hi@valen.zip</a
-            >
-          </li>
-        </ul>
-      </div>
-    </div>
+  <div class="mobile-warning">
+    <h1>sorry!</h1>
+    <p>
+      due to the nature of this site, i've made it available on desktop only :(
+    </p>
+    <p>
+      you can still check out my main, mobile-friendly site at <a
+        href="https://valen.zip"
+        style="color: white;">https://valen.zip</a
+      > though! :D
+    </p>
   </div>
+  <div class="warning">
+    <h1>DISCLAIMER</h1>
+    <p>
+      this site is very poorly coded and only works on desktop, but afaik it
+      does work!
+    </p>
+    <p>
+      you can see the main, 100% confirmed fully working version of the site by
+      clicking <a href="https://valen.zip" style="color: white;">here</a>
+    </p>
+    <p>
+      click the button below to see my awesome site revamp that definitely
+      didn't take me multiple hours
+    </p>
+    <p class="warning-btn">close</p>
+  </div>
+  <MainWindow
+    opened={true}
+    windowId="about-me-window"
+    titleBarId="title-bar"
+    class="about-me-window"
+    winTitle="about me"
+  >
+    <AboutMe />
+  </MainWindow>
+  <MainWindow
+    titleBarId="travel-map-title"
+    class="travel-map-window"
+    windowId="travel-map-window"
+    opened={false}
+    winTitle="travel map"
+  >
+    <TravelMap />
+  </MainWindow>
+  <MainWindow
+    titleBarId="guestbook-title"
+    class="guestbook-window"
+    windowId="guestbook-window"
+    opened={false}
+    winTitle="guestbook"
+  >
+    <Guestbook server:defer />
+  </MainWindow>
+  <MainWindow
+    titleBarId="fun-stuff-title"
+    class="fun-stuff-window"
+    windowId="fun-stuff-window"
+    opened={false}
+    winTitle="fun stuff"
+  >
+    <FunStuff server:defer />
+  </MainWindow>
 </Layout>
+<script>
+  document.querySelector(".warning-btn")!.addEventListener("click", () => {
+    (document.querySelector(".warning") as HTMLElement).style.display = "none";
+  });
+  const allWindows = document.querySelectorAll(".main-window");
+  const mapOpenedEvent = new CustomEvent("mapOpened");
+  allWindows.forEach((window) => {
+    window.addEventListener("mousedown", (e) => {
+      allWindows.forEach((win) => {
+        win.classList.remove("win-active");
+      });
+      window.classList.add("win-active");
+    });
+  });
+  document.querySelector(".about-me-icon")!.addEventListener("dblclick", () => {
+    allWindows.forEach((win) => {
+      win.classList.remove("win-active");
+    });
+    document.getElementById("about-me-window")!.style =
+      "position: absolute; display: flex;";
+
+    document.getElementById("about-me-window")!.classList.add("win-active");
+  });
+  document
+    .querySelector(".travel-map-icon")!
+    .addEventListener("dblclick", () => {
+      allWindows.forEach((win) => {
+        win.classList.remove("win-active");
+      });
+      document.getElementById("travel-map-window")!.style =
+        "position: absolute; display: flex;";
+      document.getElementById("travel-map-window")!.classList.add("win-active");
+      document.dispatchEvent(mapOpenedEvent);
+    });
+  document
+    .querySelector(".guestbook-icon")!
+    .addEventListener("dblclick", () => {
+      allWindows.forEach((win) => {
+        win.classList.remove("win-active");
+      });
+      document.getElementById("guestbook-window")!.style =
+        "position: absolute; display: flex;";
+      document.getElementById("guestbook-window")!.classList.add("win-active");
+    });
+  document
+    .querySelector(".fun-stuff-icon")!
+    .addEventListener("dblclick", () => {
+      allWindows.forEach((win) => {
+        win.classList.remove("win-active");
+      });
+      document.getElementById("fun-stuff-window")!.style =
+        "position: absolute; display: flex;";
+      document.getElementById("fun-stuff-window")!.classList.add("win-active");
+    });
+</script>

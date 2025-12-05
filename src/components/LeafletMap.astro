@@ -333,6 +333,10 @@
         "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png";
     }
   }
+
+  document.addEventListener("mapOpened", () => {
+    setTimeout(() => map.invalidateSize(), 100);
+  });
 </script>
 <style>
   #map {

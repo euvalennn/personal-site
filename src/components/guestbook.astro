@@ -1,7 +1,4 @@
 ---
-export const prerender = false;
-
-import Layout from "../layouts/Layout.astro";
 import GuestbookMessage from "../components/GuestbookMessage.astro";
 import { supabase } from "../lib/supabase.ts";
 import "../styles/guestbook.css";
@@ -39,30 +36,28 @@ const { data, error } = await supabase.from("guestbook_entries").select();
 const guestbook_entries = data!.reverse();
 ---
 
-<Layout>
-  <div class="container">
-    <h1 class="guestbook-title">leave a message in my guestbook!</h1>
-    <form method="post" class="guestbook-form" autocomplete="off">
-      <label class="name-label">
-        name:
-        <input class="name-input" type="text" name="name" />
-      </label>
-      <label class="message-label">
-        message:
-        <input class="message-input" type="text" name="message" />
-      </label>
-      <button class="send-btn">send</button>
-    </form>
-    <div class="err-msgs">
-      {errors.name && <p class="name-err-msg">{errors.name}</p>}
-      {errors.message && <p class="message-err-msg">{errors.message}</p>}
-    </div>
-    <div class="guestbook-entries">
-      {
-        guestbook_entries!.map((entry) => (
-          <GuestbookMessage name={entry.name} message={entry.message} />
-        ))
-      }
-    </div>
+<div class="guestbook-container">
+  <h1 class="guestbook-title">leave a message in my guestbook!</h1>
+  <form method="post" class="guestbook-form" autocomplete="off">
+    <label class="name-label">
+      name:
+      <input class="name-input" type="text" name="name" />
+    </label>
+    <label class="message-label">
+      message:
+      <input class="message-input" type="text" name="message" />
+    </label>
+    <button class="send-btn">send</button>
+  </form>
+  <div class="err-msgs">
+    {errors.name && <p class="name-err-msg">{errors.name}</p>}
+    {errors.message && <p class="message-err-msg">{errors.message}</p>}
   </div>
-</Layout>
+  <div class="guestbook-entries">
+    {
+      guestbook_entries!.map((entry) => (
+        <GuestbookMessage name={entry.name} message={entry.message} />
+      ))
+    }
+  </div>
+</div>

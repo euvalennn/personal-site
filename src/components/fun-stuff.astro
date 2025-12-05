@@ -1,0 +1,81 @@
+---
+import CloseButtonSmall from "../assets/close-button-small.svg";
+import WeatherWidget from "../components/WeatherWidget.astro";
+import CurrentlyPlayingWidget from "../components/CurrentlyPlayingWidget.astro";
+import "../styles/fun-stuff.css";
+import { getWeather } from "../lib/GetCurrentWeather";
+import { getLastFm } from "../lib/GetCurrentlyPlaying";
+const weather = await getWeather();
+const lastFm = await getLastFm();
+---
+
+<div class="fun-stuff-container">
+  <div class="fun-stuff-left-side">
+    <div class="spotify-widget widget">
+      <div class="title-bar">
+        <h1 class="title">i'm listening to</h1>
+        <div class="title-bar-buttons">
+          <CloseButtonSmall class="widget-close-btn" />
+        </div>
+      </div>
+      <CurrentlyPlayingWidget
+        name={lastFm.name}
+        artist={lastFm.artist}
+        cover_art={lastFm.cover_art}
+        album={lastFm.album}
+      />
+    </div>
+    <div class="weather-widget widget">
+      <div class="title-bar">
+        <h1 class="title">weather</h1>
+        <div class="title-bar-buttons">
+          <CloseButtonSmall class="widget-close-btn" />
+        </div>
+      </div>
+      <WeatherWidget
+        short_desc={weather.short_desc}
+        long_desc={weather.long_desc}
+        temperature={weather.temperature}
+        feels_like={weather.feels_like}
+        icon={weather.icon}
+      />
+    </div>
+  </div>
+  <div class="fun-stuff-right-side">
+    <div class="cat-pic widget">
+      <div class="title-bar">
+        <h1 class="title">random cat pic :3</h1>
+        <div class="title-bar-buttons">
+          <CloseButtonSmall class="widget-close-btn" />
+        </div>
+      </div>
+      <div class="cat-container widget-container">
+        <a href="https://cataas.com" target="_blank" class="cat-credits"
+          >credits</a
+        >
+        <div class="cat-credits-div">
+          all cat images are provided by the cataas.com api
+        </div>
+        <img
+          src="https://cataas.com/cat?width=300&height=175"
+          alt="cute cat picture"
+          style="max-height: 100%; max-width: 100%;"
+        />
+      </div>
+    </div><div class="paint-widget widget">
+      <div class="title-bar">
+        <h1 class="title">little doodling space</h1>
+        <div class="title-bar-buttons">
+          <CloseButtonSmall class="widget-close-btn" />
+        </div>
+      </div>
+      <div class="doodle-container widget-container">
+        <iframe src="https://jspaint.app" width="100%" height="100%"></iframe>
+        <a
+          href="https://jspaint.app"
+          style="margin: 0; color: #333333; font-size: 0.75em;">jspaint.app</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

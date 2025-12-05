@@ -1,0 +1,41 @@
+---
+const { titleBarId, windowId, opened, winTitle } = Astro.props;
+import CloseButton from "../assets/close-button.svg";
+import MinimizeButton from "../assets/minimize-button.svg";
+import WindowButton from "../assets/window-button.svg";
+import CloseButtonSmall from "../assets/close-button-small.svg";
+import MinimizeButtonSmall from "../assets/minimize-button-small.svg";
+import WindowButtonSmall from "../assets/window-button-small.svg";
+---
+
+<div
+  class="main-window"
+  id={windowId}
+  style={opened ? "position: absolute;" : "position: absolute; display: none;"}
+>
+  <div class="title-bar" id={titleBarId}>
+    <h1 class="title">{winTitle}</h1>
+    <div class="title-bar-buttons">
+      <div class="minimize-and-window">
+        <MinimizeButton class="minimize-btn" />
+        <MinimizeButtonSmall class="minimize-btn-small" />
+        <WindowButton class="window-btn" />
+        <WindowButtonSmall class="window-btn-small" />
+      </div>
+      <CloseButton class="close-btn" />
+      <CloseButtonSmall class="close-btn-small" />
+    </div>
+  </div>
+  <slot />
+</div>
+<script>
+  const closeBtns = document.querySelectorAll(".close-btn");
+  closeBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      btn.parentElement!.parentElement!.parentElement!.classList.remove(
+        "win-active"
+      );
+      btn.parentElement!.parentElement!.parentElement!.style = "display: none;";
+    });
+  });
+</script>

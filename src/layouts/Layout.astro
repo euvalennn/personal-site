@@ -3,34 +3,15 @@ import "../styles/layout.css";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/600.css";
 import "@fontsource/ibm-plex-mono/700.css";
-import CloseButton from "../assets/close-button.svg";
-import MinimizeButton from "../assets/minimize-button.svg";
-import WindowButton from "../assets/window-button.svg";
-import CloseButtonSmall from "../assets/close-button-small.svg";
-import MinimizeButtonSmall from "../assets/minimize-button-small.svg";
-import WindowButtonSmall from "../assets/window-button-small.svg";
 import { Image } from "astro:assets";
 import startButton from "../assets/start-button.png";
+import aboutMeIcon from "../assets/about-me-icon.png";
+import travelMapIcon from "../assets/travel-map-icon.png";
+import guestbookIcon from "../assets/guestbook-icon.png";
+import funStuffIcon from "../assets/fun-stuff-icon.png";
 import LocalTime from "../components/LocalTime.astro";
 import { getLatestCommit } from "../lib/GetLatestCommit";
 const latestCommit = await getLatestCommit();
-const currentPath = Astro.url.pathname;
-let inAboutPage = false;
-let inGuestbookPage = false;
-let inFunPage = false;
-if (currentPath === "/") {
-  inAboutPage = true;
-  inGuestbookPage = false;
-  inFunPage = false;
-} else if (currentPath === "/guestbook") {
-  inAboutPage = false;
-  inGuestbookPage = true;
-  inFunPage = false;
-} else if (currentPath === "/fun-stuff") {
-  inAboutPage = false;
-  inGuestbookPage = false;
-  inFunPage = true;
-}
 ---
 
 <html lang="en">
@@ -47,44 +28,50 @@ if (currentPath === "/") {
     />
   </head>
   <body>
-    <div id="start-menu-overlay"></div>
-    <div class="main-window">
-      <div class="title-bar">
-        <h1 class="title">valen's site.exe</h1>
-        <div class="title-bar-buttons">
-          <div class="minimize-and-window">
-            <MinimizeButton class="minimize-btn" />
-            <MinimizeButtonSmall class="minimize-btn-small" />
-            <WindowButton class="window-btn" />
-            <WindowButtonSmall class="window-btn-small" />
-          </div>
-          <CloseButton class="close-btn" />
-          <CloseButtonSmall class="close-btn-small" />
-        </div>
+    <div class="desktop" style="position: absolute; width: 100%; height: 100%;">
+      <div class="about-me-icon icon">
+        <Image
+          src={aboutMeIcon}
+          alt="Windows 98 help icon"
+          width="48"
+          height="48"
+          class="icon-img"
+        />
+        <p class="icon-label">about me</p>
       </div>
-      <nav>
-        <a
-          href="/"
-          class:list={["about-me-btn", "nav-btn", inAboutPage && "nav-active"]}
-          >about me.html</a
-        >
-        <a href="/travel-map" class="travel-map-btn nav-btn">travel map.html</a>
-        <a
-          href="/guestbook"
-          class:list={[
-            "guestbook-btn",
-            "nav-btn",
-            inGuestbookPage && "nav-active",
-          ]}>guestbook.html</a
-        >
-        <a
-          href="/fun-stuff"
-          class:list={["fun-stuff-btn", "nav-btn", inFunPage && "nav-active"]}
-          >fun stuff.html</a
-        >
-      </nav>
-      <slot />
+      <div class="travel-map-icon icon">
+        <Image
+          src={travelMapIcon}
+          alt="Windows 98 globe icon"
+          width="48"
+          height="48"
+          class="icon-img"
+        />
+        <p class="icon-label">travel map</p>
+      </div>
+      <div class="guestbook-icon icon">
+        <Image
+          src={guestbookIcon}
+          alt="Windows 98 notepad icon"
+          width="48"
+          height="48"
+          class="icon-img"
+        />
+        <p class="icon-label">guestbook</p>
+      </div>
+      <div class="fun-stuff-icon icon">
+        <Image
+          src={funStuffIcon}
+          alt="Windows 98 minesweeper icon"
+          width="48"
+          height="48"
+          class="icon-img"
+        />
+        <p class="icon-label">fun stuff</p>
+      </div>
     </div>
+    <div id="start-menu-overlay"></div>
+    <slot />
     <div class="taskbar">
       <div id="start-btn" class="startbutton">
         <Image src={startButton} alt="windows 98 start button" />
@@ -177,6 +164,25 @@ if (currentPath === "/") {
     </div>
   </body>
   <script>
+    const icons = document.querySelectorAll(".icon");
+    document.addEventListener("mousedown", (e) => {
+      if (document.querySelector(".sound-btn")!.classList[1] === "unmuted") {
+        new Audio("/mouse-click-sound.mp3").play();
+      }
+      if ((e.target as HTMLElement).className === "desktop") {
+        for (let i = 0; i < icons.length; i++) {
+          icons[i].classList.remove("selected");
+        }
+      }
+    });
+    icons.forEach((icon) => {
+      icon.addEventListener("click", () => {
+        for (let i = 0; i < icons.length; i++) {
+          icons[i].classList.remove("selected");
+        }
+        icon.classList.add("selected");
+      });
+    });
     document.getElementById("button-bw")!.addEventListener("click", () => {
       const copyText = document.getElementById("copy-text");
       const code =
@@ -218,6 +224,62 @@ if (currentPath === "/") {
         startBtn!.classList.remove("active");
         startMenuOverlay!.classList.remove("overlay-active");
       }
+    });
+    const titleBar = document.getElementById("title-bar");
+    const travelMapTitle = document.getElementById("travel-map-title");
+    const guestbookTitle = document.getElementById("guestbook-title");
+    const funStuffTitle = document.getElementById("fun-stuff-title");
+    let offsetX, offsetY;
+
+    const aboutMeMove = (e: MouseEvent) => {
+      titleBar!.parentElement!.style.left = `${e.clientX - offsetX!}px`;
+      titleBar!.parentElement!.style.top = `${e.clientY - offsetY!}px`;
+    };
+
+    const travelMapMove = (e: MouseEvent) => {
+      travelMapTitle!.parentElement!.style.left = `${e.clientX - offsetX!}px`;
+      travelMapTitle!.parentElement!.style.top = `${e.clientY - offsetY!}px`;
+    };
+
+    const guestbookMove = (e: MouseEvent) => {
+      guestbookTitle!.parentElement!.style.left = `${e.clientX - offsetX!}px`;
+      guestbookTitle!.parentElement!.style.top = `${e.clientY - offsetY!}px`;
+    };
+
+    const funStuffMove = (e: MouseEvent) => {
+      funStuffTitle!.parentElement!.style.left = `${e.clientX - offsetX!}px`;
+      funStuffTitle!.parentElement!.style.top = `${e.clientY - offsetY!}px`;
+    };
+
+    titleBar!.addEventListener("mousedown", (e) => {
+      offsetX = e.clientX - titleBar!.parentElement!.offsetLeft;
+      offsetY = e.clientY - titleBar!.parentElement!.offsetTop;
+      document.addEventListener("mousemove", aboutMeMove);
+    });
+
+    travelMapTitle!.addEventListener("mousedown", (e) => {
+      offsetX = e.clientX - travelMapTitle!.parentElement!.offsetLeft;
+      offsetY = e.clientY - travelMapTitle!.parentElement!.offsetTop;
+      document.addEventListener("mousemove", travelMapMove);
+    });
+
+    guestbookTitle!.addEventListener("mousedown", (e) => {
+      offsetX = e.clientX - guestbookTitle!.parentElement!.offsetLeft;
+      offsetY = e.clientY - guestbookTitle!.parentElement!.offsetTop;
+      document.addEventListener("mousemove", guestbookMove);
+    });
+
+    funStuffTitle!.addEventListener("mousedown", (e) => {
+      offsetX = e.clientX - funStuffTitle!.parentElement!.offsetLeft;
+      offsetY = e.clientY - funStuffTitle!.parentElement!.offsetTop;
+      document.addEventListener("mousemove", funStuffMove);
+    });
+
+    document.addEventListener("mouseup", () => {
+      document.removeEventListener("mousemove", aboutMeMove);
+      document.removeEventListener("mousemove", travelMapMove);
+      document.removeEventListener("mousemove", guestbookMove);
+      document.removeEventListener("mousemove", funStuffMove);
     });
   </script>
 </html>

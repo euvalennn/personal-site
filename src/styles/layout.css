@@ -13,7 +13,6 @@ body {
 
 .main-window {
   width: 60%;
-  min-height: 80%;
   height: auto;
   background-color: #bebebe;
   box-shadow: inset -3px -3px #000000, inset 3px 3px #bebebe,
@@ -56,14 +55,16 @@ body {
   cursor: pointer;
 }
 
-.close-btn {
+.close-btn,
+.travel-close-btn {
   margin-left: 9px;
   cursor: pointer;
 }
 
 .minimize-btn-small,
 .window-btn-small,
-.close-btn-small {
+.close-btn-small,
+.travel-close-btn-small {
   display: none;
 }
 
@@ -127,10 +128,12 @@ nav {
 }
 
 .local-time {
+  display: flex;
   padding: 1px 10px 1px 10px;
   margin-right: 5px;
   box-shadow: inset -3px -3px #ebebeb, inset 3px 3px #858585;
   height: 75%;
+  align-items: center;
 }
 
 .commit-text {
@@ -171,6 +174,23 @@ nav {
   color: white;
   font-size: 1.5em;
   margin: 0;
+}
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  width: 96px;
+  height: 96px;
+}
+
+.icon.selected > .icon-img {
+  filter: brightness(0.5) sepia(100%) hue-rotate(180deg) saturate(8);
+}
+
+.icon.selected > .icon-label {
+  background-color: #0080cb;
 }
 
 @media screen and (max-width: 850px) {

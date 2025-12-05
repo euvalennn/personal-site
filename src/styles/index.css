@@ -1,7 +1,77 @@
+.warning {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: black;
+  position: fixed;
+  height: 110%;
+  width: 110%;
+  z-index: 10000;
+}
+
+.mobile-warning {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: black;
+  position: fixed;
+  height: 110%;
+  width: 100%;
+  z-index: 10000;
+}
+
+.mobile-warning p {
+  max-width: 90%;
+}
+
+.warning-btn {
+  padding: 10px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
 .container {
   padding: 24px;
   display: flex;
   justify-content: space-between;
+}
+
+#map {
+  z-index: 0;
+}
+
+.win-active {
+  z-index: 2;
+}
+
+.travel-map-container {
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guestbook-container {
+  padding: 12px;
+  height: 75%;
+}
+
+.message-container {
+  width: 47.5%;
+  box-shadow: inset -1px -1px #000000, inset 1px 1px #bebebe,
+    inset -2px -2px #858585, inset 2px 2px #ebebeb;
+  padding: 3px;
+  height: fit-content;
+}
+
+.fun-stuff-container {
+  display: flex;
+  height: 100%;
 }
 
 .left-side {
@@ -51,6 +121,11 @@
   border-radius: 50%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 20px;
+  transition: transform 0.1s ease-in-out;
+}
+
+.pfp-img:hover {
+  transform: scale(1.05);
 }
 
 .socials-list {
@@ -86,6 +161,19 @@
 }
 
 @media screen and (max-width: 850px) {
+  body {
+    background-color: black;
+    overflow: hidden;
+  }
+
+  .warning {
+    display: none;
+  }
+
+  .mobile-warning {
+    display: flex;
+  }
+
   .container {
     flex-direction: column;
     justify-content: start;

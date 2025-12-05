@@ -9,5 +9,7 @@ export default defineConfig({
     enabled: false,
   },
 
+  output: "server",
+
   adapter: vercel(),
 });
