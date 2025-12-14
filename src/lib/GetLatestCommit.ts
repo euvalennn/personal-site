@@ -6,7 +6,7 @@ const octokit = new Octokit({
 
 export async function getLatestCommit() {
   const res = await octokit.request(
-    "GET /repos/euvalennn/personal-site/commits?sha=main&per_page=1",
+    "GET /repos/euvalennn/personal-site/commits?sha=preview&per_page=1",
     {
       headers: {
         "X-GitHub-Api-Version": "2022-11-28",
